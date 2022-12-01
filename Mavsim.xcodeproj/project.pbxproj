@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8072B96D293908D10056FD9E /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8072B96C293908D10056FD9E /* KeychainHelper.swift */; };
+		8072B96F2939097A0056FD9E /* TemporaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8072B96E2939097A0056FD9E /* TemporaryData.swift */; };
+		8072B9712939129B0056FD9E /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8072B9702939129B0056FD9E /* Models.swift */; };
 		FA0E31E6292E112B005D54A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E31E5292E112B005D54A2 /* AppDelegate.swift */; };
 		FA0E31E8292E112B005D54A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E31E7292E112B005D54A2 /* SceneDelegate.swift */; };
 		FA0E31EA292E112B005D54A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E31E9292E112B005D54A2 /* ViewController.swift */; };
@@ -20,8 +23,6 @@
 		FA0E3235292E1D23005D54A2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E3234292E1D23005D54A2 /* Colors.swift */; };
 		FA35E217292E32E7006DC6EE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FA35E216292E32E7006DC6EE /* Alamofire */; };
 		FA35E21C292E3394006DC6EE /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35E21B292E3394006DC6EE /* NetworkingClient.swift */; };
-		FA35E221292E33C9006DC6EE /* models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35E220292E33C9006DC6EE /* models.swift */; };
-		FA35E226292E3928006DC6EE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35E225292E3928006DC6EE /* Data.swift */; };
 		FA3779742930B36C00223471 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3779732930B36C00223471 /* ProfileViewController.swift */; };
 		FA6F17FA292E3DFA00CEBCCC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F17F9292E3DFA00CEBCCC /* Reachability.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8072B96C293908D10056FD9E /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		8072B96E2939097A0056FD9E /* TemporaryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporaryData.swift; sourceTree = "<group>"; };
+		8072B9702939129B0056FD9E /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		FA0E31E2292E112B005D54A2 /* Mavsim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mavsim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0E31E5292E112B005D54A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA0E31E7292E112B005D54A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,8 +66,6 @@
 		FA0E322F292E16C3005D54A2 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FA0E3234292E1D23005D54A2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FA35E21B292E3394006DC6EE /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
-		FA35E220292E33C9006DC6EE /* models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = models.swift; sourceTree = "<group>"; };
-		FA35E225292E3928006DC6EE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		FA3779732930B36C00223471 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FA6F17F9292E3DFA00CEBCCC /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8072B968293903150056FD9E /* NewOrders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewOrders;
+			sourceTree = "<group>";
+		};
+		8072B9692939033A0056FD9E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FA3779732930B36C00223471 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		8072B96A293903460056FD9E /* MyOrders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyOrders;
+			sourceTree = "<group>";
+		};
+		8072B96B293903560056FD9E /* CompletedOrders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CompletedOrders;
+			sourceTree = "<group>";
+		};
 		FA0E31D9292E112A005D54A2 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +148,10 @@
 		FA0E31E4292E112B005D54A2 /* Mavsim */ = {
 			isa = PBXGroup;
 			children = (
+				8072B96B293903560056FD9E /* CompletedOrders */,
+				8072B96A293903460056FD9E /* MyOrders */,
+				8072B9692939033A0056FD9E /* Profile */,
+				8072B968293903150056FD9E /* NewOrders */,
 				FA0E31E5292E112B005D54A2 /* AppDelegate.swift */,
 				FA0E31E7292E112B005D54A2 /* SceneDelegate.swift */,
 				FA0E31E9292E112B005D54A2 /* ViewController.swift */,
@@ -128,10 +163,10 @@
 				FA0E322F292E16C3005D54A2 /* TabBarController.swift */,
 				FA0E3234292E1D23005D54A2 /* Colors.swift */,
 				FA35E21B292E3394006DC6EE /* NetworkingClient.swift */,
-				FA35E220292E33C9006DC6EE /* models.swift */,
-				FA35E225292E3928006DC6EE /* Data.swift */,
+				8072B96E2939097A0056FD9E /* TemporaryData.swift */,
 				FA6F17F9292E3DFA00CEBCCC /* Reachability.swift */,
-				FA3779732930B36C00223471 /* ProfileViewController.swift */,
+				8072B96C293908D10056FD9E /* KeychainHelper.swift */,
+				8072B9702939129B0056FD9E /* Models.swift */,
 			);
 			path = Mavsim;
 			sourceTree = "<group>";
@@ -291,14 +326,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA35E21C292E3394006DC6EE /* NetworkingClient.swift in Sources */,
+				8072B96F2939097A0056FD9E /* TemporaryData.swift in Sources */,
 				FA0E31EA292E112B005D54A2 /* ViewController.swift in Sources */,
+				8072B9712939129B0056FD9E /* Models.swift in Sources */,
 				FA0E3235292E1D23005D54A2 /* Colors.swift in Sources */,
-				FA35E221292E33C9006DC6EE /* models.swift in Sources */,
 				FA0E322B292E169F005D54A2 /* LoginConstroller.swift in Sources */,
 				FA0E31E6292E112B005D54A2 /* AppDelegate.swift in Sources */,
 				FA3779742930B36C00223471 /* ProfileViewController.swift in Sources */,
+				8072B96D293908D10056FD9E /* KeychainHelper.swift in Sources */,
 				FA0E3230292E16C3005D54A2 /* TabBarController.swift in Sources */,
-				FA35E226292E3928006DC6EE /* Data.swift in Sources */,
 				FA6F17FA292E3DFA00CEBCCC /* Reachability.swift in Sources */,
 				FA0E31E8292E112B005D54A2 /* SceneDelegate.swift in Sources */,
 			);
@@ -476,6 +512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YQ2J3BC3FP;
 				INFOPLIST_FILE = Mavsim/Info.plist;
@@ -485,6 +522,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = khusrav.ashurzoda.Mavsim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -495,6 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YQ2J3BC3FP;
 				INFOPLIST_FILE = Mavsim/Info.plist;
@@ -504,6 +543,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = khusrav.ashurzoda.Mavsim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

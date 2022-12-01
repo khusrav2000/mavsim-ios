@@ -1,13 +1,21 @@
 //
-//  models.swift
+//  Models.swift
 //  Mavsim
 //
-//  Created by mac on 23/11/22.
+//  Created by istiqlolsoft on 01/12/22.
 //
 
 import Foundation
-import UIKit
 
-struct Message: Codable {
-    var message: String?
+struct User: Codable {
+    var Username: String
+    var Password: String?
+    var FullName: String
+    var UserId: Int
+    var ParentId: Int
+    var Enabled: Bool
+    var TransportNo: String
+    var TransportType: String
+    var TrailerNo: String
+    var ParentName: String
 }

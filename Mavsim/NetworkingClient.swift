@@ -9,16 +9,17 @@ import Foundation
 import Alamofire
 
 class NetworkingClient {
-    final var baseUrl: String = "https://api.mavsim.com"
+    final var baseUrl: String = "http://api.mavsim.com"
     
-    typealias WebServiceResponseAuthWithLogin = ([String: Any]?, Error?) -> Void
+    typealias WebServiceResponseAuthWithLogin = (String?, Error?) -> Void
+    typealias WebServiceResponseGetUserDriver = (User?, Error?) -> Void
     
-    private let session: Session = {
+    /*private let session: Session = {
         let manager = ServerTrustManager(evaluators: ["https://api.mavsim.com": DisabledTrustEvaluator()])
         let configuration = URLSessionConfiguration.af.default
         
         return Session(configuration: configuration, serverTrustManager: manager)
-    }()
+    }()*/
     
     func authWithLogin(login: String , password: String, completion: @escaping WebServiceResponseAuthWithLogin){
         
@@ -26,34 +27,40 @@ class NetworkingClient {
             return
         }
         
-        let headers: HTTPHeaders = []
-        let parameters = ["login": login, "password": password]
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: String] = [
+            "Username": "918545454",
+            "Password": "123456"
+        ]
         
-        
-        
-        AF.request(url, method: .post, parameters: parameters, headers: headers ).validate().responseJSON { response in
-            
-            if let error = response.error {
-                
-                if response.response != nil {
-                    if response.response?.statusCode == 404 {
-                        // IncLoadData.inCorrectLogOrPass = true
-                        print("ASDASdasd")
-                    }
-                } else {
-                    // IncLoadData.serverNotResponse = true
-                }
-                
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers ).validate(statusCode: 200..<500).responseString { response in
+
+            switch(response.result) {
+            case .success(let value):
+                completion(value, nil)
+            case .failure(let error):
                 completion(nil, error)
-                
-                
-            } else if let jsonDict = response.value as? [String: Any] {
-                print("EE")
-                //let token = jsonDic["message"] as! String
-                //print(token)
-                completion(jsonDict, nil)
             }
         }
+    }
+    
+    func getUserDriver(token: String, completion: @escaping WebServiceResponseGetUserDriver) {
+        guard let url = URL(string: baseUrl + "/api/driver") else {
+            return
+        }
         
+        let headers: HTTPHeaders = [
+            .authorization(bearerToken: token)
+        ]
+        
+        AF.request(url, method: .get, headers: headers ).validate(statusCode: 200..<500).responseDecodable(of: User.self) { response in
+
+            switch(response.result) {
+            case .success(let value):
+                completion(value, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
     }
 }

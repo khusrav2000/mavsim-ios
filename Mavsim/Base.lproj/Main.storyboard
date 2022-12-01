@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yI2-Gw-6KO">
-                                <rect key="frame" x="15" y="271" width="385" height="355"/>
+                                <rect key="frame" x="14" y="271" width="385" height="355"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Страница входа" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPA-58-wpJ">
@@ -53,7 +55,7 @@
                                         </connections>
                                     </button>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="OjQ-6W-J2U">
-                                        <rect key="frame" x="182" y="298" width="20" height="20"/>
+                                        <rect key="frame" x="182" y="298" width="19" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -78,11 +80,11 @@
         <scene sceneID="U33-dP-nsw">
             <objects>
                 <tabBarController storyboardIdentifier="MainStoryboard" id="8f5-G0-W3o" customClass="TabBarController" customModule="Mavsim" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EHL-zD-rHz">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="EHL-zD-rHz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemRedColor"/>
-                        <color key="barTintColor" systemColor="systemGreenColor"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="DDa-B5-jD4" kind="relationship" relationship="viewControllers" id="O81-WZ-1Bx"/>
@@ -95,13 +97,15 @@
             </objects>
             <point key="canvasLocation" x="433" y="73"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="9rM-1v-PFV">
             <objects>
                 <navigationController id="DDa-B5-jD4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="person.circle.fill" catalog="system" id="Iyc-2k-cMK"/>
+                    <tabBarItem key="tabBarItem" title="" image="person.circle.fill" catalog="system" id="Iyc-2k-cMK">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CAP-6f-ED7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -138,7 +142,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="k6a-ZV-bQv">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k6a-ZV-bQv" id="FiG-0g-fFW">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -167,7 +171,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="b2T-Ht-OJh">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b2T-Ht-OJh" id="hyY-99-Qim">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -196,7 +200,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pbS-DH-2eu">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pbS-DH-2eu" id="gfj-T4-G5t">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -215,14 +219,15 @@
             </objects>
             <point key="canvasLocation" x="2213" y="1134"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="l6Q-1h-SBX">
             <objects>
                 <navigationController id="Q1c-Uo-z7r" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Tjo-x4-CoE"/>
+                    <tabBarItem key="tabBarItem" title="" image="bookmark.circle.fill" catalog="system" id="Tjo-x4-CoE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JQD-bm-cz4">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="AccentColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="QN5-NF-AA3" kind="relationship" relationship="rootViewController" id="CgZ-st-DAA"/>
@@ -232,13 +237,13 @@
             </objects>
             <point key="canvasLocation" x="1320" y="1134"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="RUG-Lt-UJk">
             <objects>
                 <navigationController id="Nlv-kf-bck" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="FNx-Iq-NWv"/>
+                    <tabBarItem key="tabBarItem" title="" image="checklist" catalog="system" id="FNx-Iq-NWv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QoD-e6-0C8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -249,15 +254,18 @@
             </objects>
             <point key="canvasLocation" x="1332" y="448"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="yAm-Ft-UVc">
             <objects>
                 <navigationController id="arZ-z5-xwo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="J3y-fB-0IB"/>
+                    <tabBarItem key="tabBarItem" title="" image="checklist.unchecked" catalog="system" id="J3y-fB-0IB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YPU-f6-Idi">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gBL-bM-K4S">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="z7T-Ly-gCA" kind="relationship" relationship="rootViewController" id="uqW-u1-b3E"/>
                     </connections>
@@ -269,18 +277,18 @@
     </scenes>
     <resources>
         <image name="Delivery address-amico" width="500" height="500"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="bookmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="checklist" catalog="system" width="128" height="107"/>
+        <image name="checklist.unchecked" catalog="system" width="128" height="107"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -27,12 +27,7 @@ class LoginController: UIViewController {
     
     
     @IBAction func clickLoginButton(_ sender: Any) {
-        
         authWithLogin()
-        
-        let vc = storyboard?.instantiateViewController(withIdentifier: "MainStoryboard") as! TabBarController
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
     }
     
     func authWithLogin(){
@@ -40,18 +35,46 @@ class LoginController: UIViewController {
         indicatorLoading.isHidden = false
         loginButton.setTitle("", for: .normal)
 
-        networkClient.authWithLogin(login: login.text!, password: password.text! ){ (json, error) in
+        networkClient.authWithLogin(login: login.text!, password: password.text! ){ (token, error) in
             if let error = error {
                 print(error.localizedDescription)
                 self.showRightToast()
                 
-            } else if let json = json {
-                
-                let token = json["message"] as! String
-                print(token)
-                
+            } else if let token = token {
+                print("token \(String(describing: token))")
+                let data = Data(token.utf8)
+                KeychainHelper.standart.save(data, service: "access-token", account: "mavsim")
+                self.loadDriverInfo()
             }
         }
+    }
+    
+    func loadDriverInfo() {
+        
+        let data = KeychainHelper.standart.read(service: "access-token", account: "mavsim")
+        
+        if data == nil {
+            return
+        }
+        
+        let token = String(data: data!, encoding: .utf8)!
+        networkClient.getUserDriver(token: token) { (user, error) in
+            if let error = error {
+                print(error)
+                self.showRightToast()
+            } else if let user = user {
+                TemporaryData.user = user
+                self.presentMain()
+            }
+            
+        }
+        
+    }
+    
+    func presentMain() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MainStoryboard") as! TabBarController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     func showRightToast(){

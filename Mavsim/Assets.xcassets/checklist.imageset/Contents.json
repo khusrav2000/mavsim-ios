@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "Delivery address-amico.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "checklist.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },

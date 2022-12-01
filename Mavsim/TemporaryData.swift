@@ -13,3 +13,7 @@ struct IncLoadData {
     static var serverNotResponse = false
     static var errorOnLoadData = false
 }
+
+struct TemporaryData {
+    static var user: User? = nil
+}

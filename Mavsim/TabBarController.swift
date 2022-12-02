@@ -10,13 +10,13 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.backgroundColor = Colors.yellow
+        // tabBar.tintColor = Colors.yellow
+        tabBar.barTintColor = Colors.yellow
         selectedIndex = 1
         tabBar.unselectedItemTintColor = .white
         //tabBar.barTintColor = Colors.yellow

@@ -17,7 +17,7 @@ class LoginController: UIViewController {
     
     var loginTextRes: String?
     
-    private let networkClient = NetworkingClient()
+    // private let networkClient = NetworkingClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class LoginController: UIViewController {
         indicatorLoading.isHidden = false
         loginButton.setTitle("", for: .normal)
 
-        networkClient.authWithLogin(login: login.text!, password: password.text! ){ (token, error) in
+        NetworkingClient.standart.authWithLogin(login: login.text!, password: password.text! ){ (token, error) in
             if let error = error {
                 print(error.localizedDescription)
                 self.showRightToast()
@@ -58,7 +58,7 @@ class LoginController: UIViewController {
         }
         
         let token = String(data: data!, encoding: .utf8)!
-        networkClient.getUserDriver(token: token) { (user, error) in
+        NetworkingClient.standart.getUserDriver(token: token) { (user, error) in
             if let error = error {
                 print(error)
                 self.showRightToast()

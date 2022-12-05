@@ -24,6 +24,8 @@ class NewOrdersCell: UITableViewCell {
     
     
     func setValues(order: Order) {
+        setDesign()
+        
         appID.text = "Заявка № \(order.AppId ?? 0)"
         transportType.text = "Вид траспорта: \(order.Transport ?? "nil")"
         entryPoint.text = "Въезд в страну получателя: \(order.entry_point ?? "nil")"
@@ -31,5 +33,18 @@ class NewOrdersCell: UITableViewCell {
         senderAddress.text = "Адрес: \(order.SenderAddress ?? "nil")"
         senderContact.text = "Контакт: \(order.SenderContact ?? "nil")"
         senderPhone.text = "Тел: \(order.SenderPhone ?? "nil")"
+    }
+
+    
+    func setDesign() {
+        acceptButtom.tintColor = Colors.yellow
+        
+        headerView.layer.cornerRadius = 10
+        headerView.backgroundColor = Colors.yellow
+        
+        bodyView.addBorder(toSide: .Left, withColor: Colors.yellow.cgColor, andThickness: 3)
+        bodyView.layer.cornerRadius = 10
+        bodyView.backgroundColor = .white
+        
     }
 }

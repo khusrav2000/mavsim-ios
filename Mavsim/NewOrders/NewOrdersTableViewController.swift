@@ -40,6 +40,7 @@ class NewOrdersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewOrdersCell", for: indexPath) as! NewOrdersCell
         
+        cell.backgroundColor = UIColor.clear
         cell.setValues(order: newOrders[indexPath.row])
         
         return cell

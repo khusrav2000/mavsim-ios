@@ -15,6 +15,8 @@ class LoginController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var indicatorLoading: UIActivityIndicatorView!
     
+    @IBOutlet weak var loginView: UIView!
+    @IBOutlet weak var loadingView: UIView!
     var loginTextRes: String?
     
     // private let networkClient = NetworkingClient()
@@ -22,7 +24,25 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.backgroundColor = Colors.yellow
+        loginButton.tintColor = Colors.yellow
+        
+        checkToken()
+    }
+    
+    func checkToken() {
+        let data = KeychainHelper.standart.read(service: "access-token", account: "mavsim")
+        
+        if data == nil {
+            loadingView.isHidden = true
+            loginView.isHidden = false
+        } else {
+            refreshToken()
+        }
+            
+    }
+    
+    func refreshToken() {
+        loadDriverInfo()
     }
     
     

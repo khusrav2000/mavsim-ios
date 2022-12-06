@@ -19,8 +19,28 @@ class NewOrdersCell: UITableViewCell {
     @IBOutlet weak var senderPhone: UILabel!
     
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var bodyView: UIView!
+
+    @IBOutlet weak var orderInfoBody: UIView!
     @IBOutlet weak var acceptButtom: UIButton!
+    
+    var bodyViewAction: (() -> ())?
+    var acceptButtomAction: (() -> ())?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(bodyViewTrapped(_:)))
+        orderInfoBody.addGestureRecognizer(gesture)
+        self.acceptButtom.addTarget(self, action: #selector(acceptButtomTrapped(_:)), for: .touchUpInside)
+    }
+    
+    @IBAction func bodyViewTrapped(_ sender: UITapGestureRecognizer) {
+        bodyViewAction?()
+    }
+    
+    @IBAction func acceptButtomTrapped(_ sender: UIButton) {
+        acceptButtomAction?()
+    }
     
     
     func setValues(order: Order) {
@@ -37,14 +57,33 @@ class NewOrdersCell: UITableViewCell {
 
     
     func setDesign() {
-        acceptButtom.tintColor = Colors.yellow
         
+        headerView.layer.borderWidth = 1
+        headerView.layer.borderColor = Colors.yellow.cgColor
         headerView.layer.cornerRadius = 10
-        headerView.backgroundColor = Colors.yellow
+        headerView.backgroundColor = Colors.yellow_300
+        headerView.layer.shadowOpacity = 0.2
+        headerView.layer.shadowOffset = .zero
+        headerView.layer.shadowRadius = 2
         
-        bodyView.addBorder(toSide: .Left, withColor: Colors.yellow.cgColor, andThickness: 3)
-        bodyView.layer.cornerRadius = 10
-        bodyView.backgroundColor = .white
+        // bodyView.addBorder(toSide: .Left, withColor: Colors.yellow.cgColor, andThickness: 3)
+        /* let border = CALayer()
+        print("Height = ", orderInfoBody.frame.height)
+        border.backgroundColor = Colors.yellow.cgColor
+        border.frame = CGRect(x: orderInfoBody.frame.minX, y: orderInfoBody.frame.minY, width: 3, height: orderInfoBody.frame.height)
+        orderInfoBody.layer.addSublayer(border)
+         */
+        
+        acceptButtom.layer.cornerRadius = 5
+        acceptButtom.setTitle("ПРИНЯТЬ \nЗАКАЗ", for: .normal)
+        acceptButtom.titleLabel?.lineBreakMode = .byWordWrapping
+        
+        orderInfoBody.layer.cornerRadius = 10
+        orderInfoBody.backgroundColor = .white
+        orderInfoBody.layer.shadowOpacity = 0.2
+        orderInfoBody.layer.shadowOffset = .zero
+        orderInfoBody.layer.shadowRadius = 2
+        
         
     }
 }

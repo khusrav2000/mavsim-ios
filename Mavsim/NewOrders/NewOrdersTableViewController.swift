@@ -43,7 +43,40 @@ class NewOrdersTableViewController: UITableViewController {
         cell.backgroundColor = UIColor.clear
         cell.setValues(order: newOrders[indexPath.row])
         
+        cell.bodyViewAction = { [unowned self] in
+            self.bodyViewTrapped(row: indexPath.row)
+        }
+        cell.acceptButtomAction = { [unowned self] in
+            self.acceptButtonTrapped(row: indexPath.row)
+        }
+        
+        
         return cell
+    }
+    
+    func bodyViewTrapped(row: Int) {
+
+        /*let vc = storyboard?.instantiateViewController(withIdentifier: "OrderInformation") as! OrderInformation
+        
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)*/
+        
+        self.performSegue(withIdentifier: "showOrderInfoSegue", sender: row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showOrderInfoSegue" {
+            let destinationVC = segue.destination as? OrderInformation
+            destinationVC?.order = newOrders[sender as? Int ?? 0 ]
+        }
+    }
+    
+    func acceptButtonTrapped(row: Int) {
+        print("button = ", row)
+    }
+    
+    func OrderInfo() {
+        
     }
     
     func loadNewOrders() {

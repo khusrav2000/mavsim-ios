@@ -19,13 +19,17 @@ class LoginController: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     var loginTextRes: String?
     
+    
     // private let networkClient = NetworkingClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loginButton.tintColor = Colors.yellow
-        
+        loginView.layer.cornerRadius = 5
+        loginView.layer.shadowOpacity = 0.2
+        loginView.layer.shadowOffset = .zero
+        loginView.layer.shadowRadius = 2
         checkToken()
     }
     

@@ -53,6 +53,14 @@ class ProfileController: UIViewController {
         setBorderDesign(tpView: parentName)
         setBorderDesign(tpView: logout)
         setValues()
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(logoutTrapped(_:)))
+        logout.addGestureRecognizer(gesture)
+    }
+    
+    @IBAction func logoutTrapped(_ sender: UITapGestureRecognizer) {
+        KeychainHelper.standart.delete(service: "access-token", account: "mavsim")
+        self.dismiss(animated: true)
     }
     
     func setBorderDesign(tpView: UIView) {

@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-class NewOrdersCell: UITableViewCell {
-
+class MyOrderCell: UITableViewCell {
     
     @IBOutlet weak var appID: UILabel!
     @IBOutlet weak var transportType: UILabel!
@@ -25,27 +24,35 @@ class NewOrdersCell: UITableViewCell {
     
     @IBOutlet weak var orderInfoBackground: UIView!
     
+
+    @IBOutlet weak var statusButton: UIButton!
     
-    @IBOutlet weak var acceptButtom: UIButton!
+    
+    @IBOutlet weak var deleteButtom: UIButton!
     
     var bodyViewAction: (() -> ())?
-    var acceptButtomAction: (() -> ())?
+    var statusButtonAction: (() -> ())?
+    var deleteButtomAction: (() -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(bodyViewTrapped(_:)))
         orderInfoBody.addGestureRecognizer(gesture)
-        self.acceptButtom.addTarget(self, action: #selector(acceptButtomTrapped(_:)), for: .touchUpInside)
-        
+        self.deleteButtom.addTarget(self, action: #selector(deleteButtomTrapped(_:)), for: .touchUpInside)
+        self.statusButton.addTarget(self, action: #selector(statusButtonTrapped(_:)), for: .touchUpInside)
     }
     
     @IBAction func bodyViewTrapped(_ sender: UITapGestureRecognizer) {
         bodyViewAction?()
     }
     
-    @IBAction func acceptButtomTrapped(_ sender: UIButton) {
-        acceptButtomAction?()
+    @IBAction func statusButtonTrapped(_ sender: UIButton) {
+        statusButtonAction?()
+    }
+    
+    @IBAction func deleteButtomTrapped(_ sender: UIButton) {
+        deleteButtomAction?()
     }
     
     
@@ -79,9 +86,17 @@ class NewOrdersCell: UITableViewCell {
         border.frame = CGRect(x: orderInfoBody.frame.minX, y: orderInfoBody.frame.minY, width: 3, height: orderInfoBody.frame.height)
         orderInfoBody.layer.addSublayer(border)
          */
-        acceptButtom.layer.cornerRadius = 5
-        acceptButtom.setTitle("ПРИНЯТЬ \nЗАКАЗ", for: .normal)
-        acceptButtom.titleLabel?.lineBreakMode = .byWordWrapping
+        
+        
+        deleteButtom.layer.cornerRadius = 5
+        deleteButtom.setTitle("УДАЛИТЬ \nЗАКАЗ", for: .normal)
+        deleteButtom.titleLabel?.lineBreakMode = .byWordWrapping
+     
+        
+        self.statusButton.addTarget(self, action: #selector(statusButtonTrapped(_:)), for: .touchUpInside)
+        statusButton.layer.cornerRadius = 5
+        statusButton.setTitle("СТАТУС", for: .normal)
+        statusButton.titleLabel?.lineBreakMode = .byWordWrapping
         
         orderInfoBody.layer.cornerRadius = 10
         orderInfoBody.backgroundColor = .white

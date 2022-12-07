@@ -8,26 +8,26 @@
 import Foundation
 import UIKit
 
-class NewOrdersTableViewController: UITableViewController {
+class MyOrdersTableViewController: UITableViewController {
     
-    var newOrders: [Order] = []
+    var myOrders: [Order] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.refreshControl!.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.refreshControl!.beginRefreshing()
-        loadNewOrders()
+        loadMyOrders()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.refreshControl!.beginRefreshing()
-        loadNewOrders()
+        loadMyOrders()
     }
                                  
     @objc func refresh(_ sender: AnyObject) {
-        loadNewOrders()
+        loadMyOrders()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,20 +35,26 @@ class NewOrdersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newOrders.count
+        return myOrders.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewOrdersCell", for: indexPath) as! NewOrdersCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyOrdersCell", for: indexPath) as! MyOrderCell
         
         cell.backgroundColor = UIColor.clear
-        cell.setValues(order: newOrders[indexPath.row])
+        cell.setValues(order: myOrders[indexPath.row])
         
         cell.bodyViewAction = { [unowned self] in
             self.bodyViewTrapped(row: indexPath.row)
         }
-        cell.acceptButtomAction = { [unowned self] in
-            self.acceptButtonTrapped(row: indexPath.row)
+        
+        cell.statusButtonAction = { [unowned self] in
+            self.statusButtonTrapped(row: indexPath.row)
+            
+        }
+        
+        cell.deleteButtomAction = { [unowned self] in
+            self.deleteButtonTrapped(row: indexPath.row)
         }
         
         
@@ -56,30 +62,37 @@ class NewOrdersTableViewController: UITableViewController {
     }
     
     func bodyViewTrapped(row: Int) {
-        self.performSegue(withIdentifier: "showOrderInfoSegue", sender: row)
+        self.performSegue(withIdentifier: "showMyOrderInfoSegue", sender: row)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showOrderInfoSegue" {
+        if segue.identifier == "showMyOrderInfoSegue" {
             let destinationVC = segue.destination as? OrderInformation
-            destinationVC?.order = newOrders[sender as? Int ?? 0 ]
+            destinationVC?.order = myOrders[sender as? Int ?? 0 ]
+        } else if segue.identifier == "showOrderStatusSeque" {
+            let destinationVC = segue.destination as? OrderStatus
+            destinationVC?.appId = myOrders[sender as? Int ?? 0 ].AppId
         }
     }
     
-    func acceptButtonTrapped(row: Int) {
+    func statusButtonTrapped(row: Int) {
+        self.performSegue(withIdentifier: "showOrderStatusSeque", sender: row)
+    }
+    
+    func deleteButtonTrapped(row: Int) {
         print("button = ", row)
         let vc = storyboard?.instantiateViewController(withIdentifier: "ModalPopUp") as! ModalPopUpViewController
         vc.modalPresentationStyle = .custom
         vc.modalTransitionStyle = .crossDissolve
         vc.yesAction = { [unowned self] in
-            self.acceptNewOrder(row: row)
+            self.deleteMyOrder(row: row)
         }
         present(vc, animated: true, completion: nil)
         // let alert: UIAlertAction = UIAlertAction(title: "asdasd", style: .default)
         // present(alert, animated: true)
     }
     
-    func acceptNewOrder(row: Int) {
+    func deleteMyOrder(row: Int) {
         self.tableView.refreshControl!.beginRefreshing()
         let data = KeychainHelper.standart.read(service: "access-token", account: "mavsim")
         
@@ -88,9 +101,9 @@ class NewOrdersTableViewController: UITableViewController {
         }
         let token = String(data: data!, encoding: .utf8)!
         
-        NetworkingClient.standart.postOrderAccept(token: token, id: newOrders[row].id, location: "55.661574,37.573856") { (success, error) in
+        NetworkingClient.standart.delOrderDelete(token: token, id: myOrders[row].id) { (success, error) in
             if success ?? false {
-                self.loadNewOrders()
+                self.loadMyOrders()
             } else {
                 // error
             }
@@ -102,7 +115,7 @@ class NewOrdersTableViewController: UITableViewController {
         
     }
     
-    func loadNewOrders() {
+    func loadMyOrders() {
         let data = KeychainHelper.standart.read(service: "access-token", account: "mavsim")
         
         if data == nil {
@@ -110,12 +123,12 @@ class NewOrdersTableViewController: UITableViewController {
         }
         
         let token = String(data: data!, encoding: .utf8)!
-        NetworkingClient.standart.getNewOrders(token: token) { (orders, error) in
+        NetworkingClient.standart.getMyOrders(token: token) { (orders, error) in
             if let error = error {
                 print(error)
                 // self.showRightToast()
             } else if let orders = orders {
-                self.newOrders = orders
+                self.myOrders = orders
                 self.tableView.refreshControl!.endRefreshing()
                 self.tableView.reloadData()
             }

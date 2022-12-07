@@ -78,7 +78,7 @@ class OrderInformation: UIViewController {
     func setValues() {
         appId.text = "Данные заказа № \(order?.AppId ?? 0)"
         cargoType.text = "Наименование груза: \(order?.CargoType ?? "")"
-        quantity.text = "Объем (м^3): \(order?.quantity ?? "")"
+        quantity.text = "Объем (м): \(order?.quantity ?? "")"
         weight.text = "Вес (кг): \(order?.weight ?? "")"
         dcId.text = "Товарный код: \(order?.dcId ?? 0)"
         size.text = "Размер (ДхШхВ): \(order?.size ?? "")"

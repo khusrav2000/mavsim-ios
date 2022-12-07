@@ -21,8 +21,12 @@ class NavigationViewController: UINavigationController {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = Colors.yellow
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationBar.tintColor = .white
         
     }
 }

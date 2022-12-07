@@ -52,7 +52,16 @@ struct Order: Codable {
     var Country: String?
     var Transport: String?
     var Method: String?
+    var status: String?
 }
+
+struct Status: Codable {
+    var id: Int
+    var name: String?
+    var file_upload: Bool
+}
+
+
 
 
 

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class NewOrdersCell: UITableViewCell {
+class CompletedOrdersCell: UITableViewCell {
 
     
     @IBOutlet weak var appID: UILabel!
@@ -26,26 +26,18 @@ class NewOrdersCell: UITableViewCell {
     @IBOutlet weak var orderInfoBackground: UIView!
     
     
-    @IBOutlet weak var acceptButtom: UIButton!
-    
     var bodyViewAction: (() -> ())?
-    var acceptButtomAction: (() -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(bodyViewTrapped(_:)))
         orderInfoBody.addGestureRecognizer(gesture)
-        self.acceptButtom.addTarget(self, action: #selector(acceptButtomTrapped(_:)), for: .touchUpInside)
         
     }
     
     @IBAction func bodyViewTrapped(_ sender: UITapGestureRecognizer) {
         bodyViewAction?()
-    }
-    
-    @IBAction func acceptButtomTrapped(_ sender: UIButton) {
-        acceptButtomAction?()
     }
     
     
@@ -79,9 +71,6 @@ class NewOrdersCell: UITableViewCell {
         border.frame = CGRect(x: orderInfoBody.frame.minX, y: orderInfoBody.frame.minY, width: 3, height: orderInfoBody.frame.height)
         orderInfoBody.layer.addSublayer(border)
          */
-        acceptButtom.layer.cornerRadius = 5
-        acceptButtom.setTitle("ПРИНЯТЬ \nЗАКАЗ", for: .normal)
-        acceptButtom.titleLabel?.lineBreakMode = .byWordWrapping
         
         orderInfoBody.layer.cornerRadius = 10
         orderInfoBody.backgroundColor = .white

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		800207E7293DC470002589A8 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800207E6293DC470002589A8 /* UIHelpers.swift */; };
+		803597E7293FE45B00D38B1F /* ModalPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803597E6293FE45B00D38B1F /* ModalPopUpViewController.swift */; };
+		803597E929403A9C00D38B1F /* MyOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803597E829403A9C00D38B1F /* MyOrdersTableViewController.swift */; };
+		803597EB2940498000D38B1F /* MyOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803597EA2940498000D38B1F /* MyOrdersCell.swift */; };
+		803597ED29404D6000D38B1F /* CompletedOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803597EC29404D6000D38B1F /* CompletedOrdersTableViewController.swift */; };
+		803597EF29404D8000D38B1F /* CompletedOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803597EE29404D8000D38B1F /* CompletedOrdersCell.swift */; };
+		803597F1294058E300D38B1F /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803597F0294058E300D38B1F /* OrderStatus.swift */; };
 		803B6AD52939F6B20008BC5D /* NewOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B6AD42939F6B20008BC5D /* NewOrdersTableViewController.swift */; };
 		803B6AD72939FC880008BC5D /* NewOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B6AD62939FC880008BC5D /* NewOrdersCell.swift */; };
 		803B6AD9293A1E230008BC5D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B6AD8293A1E230008BC5D /* NavigationViewController.swift */; };
@@ -51,6 +57,12 @@
 
 /* Begin PBXFileReference section */
 		800207E6293DC470002589A8 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
+		803597E6293FE45B00D38B1F /* ModalPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPopUpViewController.swift; sourceTree = "<group>"; };
+		803597E829403A9C00D38B1F /* MyOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewController.swift; sourceTree = "<group>"; };
+		803597EA2940498000D38B1F /* MyOrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersCell.swift; sourceTree = "<group>"; };
+		803597EC29404D6000D38B1F /* CompletedOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedOrdersTableViewController.swift; sourceTree = "<group>"; };
+		803597EE29404D8000D38B1F /* CompletedOrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedOrdersCell.swift; sourceTree = "<group>"; };
+		803597F0294058E300D38B1F /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		803B6AD42939F6B20008BC5D /* NewOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrdersTableViewController.swift; sourceTree = "<group>"; };
 		803B6AD62939FC880008BC5D /* NewOrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrdersCell.swift; sourceTree = "<group>"; };
 		803B6AD8293A1E230008BC5D /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +138,8 @@
 		8072B96A293903460056FD9E /* MyOrders */ = {
 			isa = PBXGroup;
 			children = (
+				803597E829403A9C00D38B1F /* MyOrdersTableViewController.swift */,
+				803597EA2940498000D38B1F /* MyOrdersCell.swift */,
 			);
 			path = MyOrders;
 			sourceTree = "<group>";
@@ -133,6 +147,8 @@
 		8072B96B293903560056FD9E /* CompletedOrders */ = {
 			isa = PBXGroup;
 			children = (
+				803597EC29404D6000D38B1F /* CompletedOrdersTableViewController.swift */,
+				803597EE29404D8000D38B1F /* CompletedOrdersCell.swift */,
 			);
 			path = CompletedOrders;
 			sourceTree = "<group>";
@@ -182,6 +198,8 @@
 				8072B9702939129B0056FD9E /* Models.swift */,
 				800207E6293DC470002589A8 /* UIHelpers.swift */,
 				809E83F4293F551E00F67083 /* OrderInformation.swift */,
+				803597E6293FE45B00D38B1F /* ModalPopUpViewController.swift */,
+				803597F0294058E300D38B1F /* OrderStatus.swift */,
 			);
 			path = Mavsim;
 			sourceTree = "<group>";
@@ -340,14 +358,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				803597EF29404D8000D38B1F /* CompletedOrdersCell.swift in Sources */,
 				FA35E21C292E3394006DC6EE /* NetworkingClient.swift in Sources */,
 				8072B96F2939097A0056FD9E /* TemporaryData.swift in Sources */,
 				FA0E31EA292E112B005D54A2 /* ViewController.swift in Sources */,
+				803597ED29404D6000D38B1F /* CompletedOrdersTableViewController.swift in Sources */,
+				803597E7293FE45B00D38B1F /* ModalPopUpViewController.swift in Sources */,
 				803B6AD9293A1E230008BC5D /* NavigationViewController.swift in Sources */,
 				8072B9712939129B0056FD9E /* Models.swift in Sources */,
+				803597EB2940498000D38B1F /* MyOrdersCell.swift in Sources */,
 				FA0E3235292E1D23005D54A2 /* Colors.swift in Sources */,
 				FA0E322B292E169F005D54A2 /* LoginConstroller.swift in Sources */,
 				809E83F5293F551E00F67083 /* OrderInformation.swift in Sources */,
+				803597E929403A9C00D38B1F /* MyOrdersTableViewController.swift in Sources */,
 				FA0E31E6292E112B005D54A2 /* AppDelegate.swift in Sources */,
 				803B6AD72939FC880008BC5D /* NewOrdersCell.swift in Sources */,
 				FA3779742930B36C00223471 /* ProfileViewController.swift in Sources */,
@@ -356,6 +379,7 @@
 				FA0E3230292E16C3005D54A2 /* TabBarController.swift in Sources */,
 				FA6F17FA292E3DFA00CEBCCC /* Reachability.swift in Sources */,
 				803B6AD52939F6B20008BC5D /* NewOrdersTableViewController.swift in Sources */,
+				803597F1294058E300D38B1F /* OrderStatus.swift in Sources */,
 				FA0E31E8292E112B005D54A2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

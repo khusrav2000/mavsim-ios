@@ -10,8 +10,9 @@ import UIKit
 
 class ModalPopUpViewController: UIViewController {
     
-    @IBOutlet weak var modalView: UIView!
+    var text: String = "Вы действительно принимаете этот заказ"
     
+    @IBOutlet weak var modalView: UIView!
     
     @IBOutlet weak var alertText: UILabel!
     
@@ -27,6 +28,7 @@ class ModalPopUpViewController: UIViewController {
         yesButton.layer.cornerRadius = 5
         noButton.layer.cornerRadius = 5
         view.backgroundColor = .black.withAlphaComponent(0.4)
+        alertText.text = text
     }
     
     

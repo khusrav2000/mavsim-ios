@@ -88,7 +88,7 @@ class NewOrdersTableViewController: UITableViewController {
         }
         let token = String(data: data!, encoding: .utf8)!
         
-        NetworkingClient.standart.postOrderAccept(token: token, id: newOrders[row].id, location: "55.661574,37.573856") { (success, error) in
+        NetworkingClient.standart.postOrderAccept(token: token, id: newOrders[row].id, location: TemporaryData.lastLocation ?? "nil") { (success, error) in
             if success ?? false {
                 self.loadNewOrders()
             } else {

@@ -211,9 +211,16 @@ class LoginController: UIViewController {
     }
     
     func presentMain() {
+        // trackLocation()
         let vc = storyboard?.instantiateViewController(withIdentifier: "MainStoryboard") as! TabBarController
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
+    }
+    
+    func trackLocation() {
+        let vc = TrackLocationViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     func showRightToast(){

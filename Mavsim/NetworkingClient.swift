@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 class NetworkingClient {
     final var baseUrl: String = "http://api.mavsim.com"
@@ -22,6 +23,9 @@ class NetworkingClient {
     typealias WebServiceResponseGetMyOrders = ([Order]?, Error?) -> Void
     typealias WebServiceResponseGetComplatedOrders = ([Order]?, Error?) -> Void
     typealias WebServiceResponseDelOrderDelete = (Bool?, Error?) -> Void
+    typealias WebServiceResponsePutDriverLocation = (Bool?, Error?) -> Void
+    
+    typealias WebServiceResponsePostFile = (Bool?, Error?) -> Void
     /*private let session: Session = {
         let manager = ServerTrustManager(evaluators: ["https://api.mavsim.com": DisabledTrustEvaluator()])
         let configuration = URLSessionConfiguration.af.default
@@ -172,10 +176,13 @@ class NetworkingClient {
 
             switch(response.result) {
             case .success(let value):
-                
                 completion(value, nil)
             case .failure(let error):
-                completion(nil, error)
+                if response.response?.statusCode == 404 {
+                    completion([], nil)
+                } else {
+                    completion(nil, error)
+                }
             }
         }
     }
@@ -224,6 +231,69 @@ class NetworkingClient {
                 completion(value, nil)
             case .failure(let error):
                 completion(nil, error)
+            }
+        }
+    }
+    
+    func postPhotosAndStatus(token: String, appId: Int, status: Int, location: String, images: [UIImage], completion: @escaping WebServiceResponsePostFile) {
+        guard let url = URL(string: baseUrl + "/api/cargo/upload") else {
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            .authorization(bearerToken: token)
+        ]
+        
+        AF.upload(multipartFormData: { multipartFormData in
+            for img in images {
+                let imgData = img.jpegData(compressionQuality: 0.5)!
+                multipartFormData.append(imgData, withName: "")
+            }
+            multipartFormData.append(Data(String(appId).utf8), withName: "appId")
+            multipartFormData.append(Data(String(status).utf8), withName: "status")
+            multipartFormData.append(Data(String(status).utf8), withName: "location")
+        },  to: url,
+            method: .post,
+            headers: headers)
+        .uploadProgress { progress in
+            print(progress)
+        }
+        .responseString { response in
+            print("response")
+            print(response.value)
+            if response.response?.statusCode == 202 {
+                print("SUC RESS")
+                completion(true, nil)
+            } else if let error = response.error {
+                print("ERROR = ", response.response?.statusCode)
+                print(response)
+            
+                completion(false, error)
+            }
+        }
+    }
+    
+    func putDriverLocation(token: String, location: String, completion: @escaping WebServiceResponsePutDriverLocation) {
+        guard let url = URL(string: baseUrl + "/api/driver/location") else {
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            .authorization(bearerToken: token)
+        ]
+        let parameters: [String: Any] = [
+            "location": location
+        ]
+        
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers ).validate(statusCode: 200..<500).responseString { response in
+            
+            let statusCode = response.response?.statusCode ?? 404
+            if statusCode == 200 {
+                completion(true, nil)
+            } else if let error = response.error {
+                completion(false, error)
+            } else {
+                completion(false, NSError(domain: "error", code: statusCode))
             }
         }
     }

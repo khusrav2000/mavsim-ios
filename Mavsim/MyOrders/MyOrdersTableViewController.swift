@@ -84,6 +84,7 @@ class MyOrdersTableViewController: UITableViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ModalPopUp") as! ModalPopUpViewController
         vc.modalPresentationStyle = .custom
         vc.modalTransitionStyle = .crossDissolve
+        vc.text = "Вы дествительно хотите удалить этот заказ"
         vc.yesAction = { [unowned self] in
             self.deleteMyOrder(row: row)
         }

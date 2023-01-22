@@ -11,6 +11,7 @@
 		800AB86729408B8E0012EADC /* OrderStatusImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800AB86629408B8E0012EADC /* OrderStatusImageCell.swift */; };
 		802F8266296467D900DB053E /* TrackLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F8265296467D900DB053E /* TrackLocationViewController.swift */; };
 		802F8268296468AF00DB053E /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F8267296468AF00DB053E /* LocationService.swift */; };
+		802F826A2965425900DB053E /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F82692965425900DB053E /* ActivityIndicatorViewController.swift */; };
 		803597E7293FE45B00D38B1F /* ModalPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803597E6293FE45B00D38B1F /* ModalPopUpViewController.swift */; };
 		803597E929403A9C00D38B1F /* MyOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803597E829403A9C00D38B1F /* MyOrdersTableViewController.swift */; };
 		803597EB2940498000D38B1F /* MyOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803597EA2940498000D38B1F /* MyOrdersCell.swift */; };
@@ -63,6 +64,7 @@
 		800AB86629408B8E0012EADC /* OrderStatusImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusImageCell.swift; sourceTree = "<group>"; };
 		802F8265296467D900DB053E /* TrackLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackLocationViewController.swift; sourceTree = "<group>"; };
 		802F8267296468AF00DB053E /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		802F82692965425900DB053E /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
 		803597E6293FE45B00D38B1F /* ModalPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPopUpViewController.swift; sourceTree = "<group>"; };
 		803597E829403A9C00D38B1F /* MyOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewController.swift; sourceTree = "<group>"; };
 		803597EA2940498000D38B1F /* MyOrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersCell.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				803597E6293FE45B00D38B1F /* ModalPopUpViewController.swift */,
 				802F8265296467D900DB053E /* TrackLocationViewController.swift */,
 				802F8267296468AF00DB053E /* LocationService.swift */,
+				802F82692965425900DB053E /* ActivityIndicatorViewController.swift */,
 			);
 			path = Mavsim;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				803597EF29404D8000D38B1F /* CompletedOrdersCell.swift in Sources */,
+				802F826A2965425900DB053E /* ActivityIndicatorViewController.swift in Sources */,
 				FA35E21C292E3394006DC6EE /* NetworkingClient.swift in Sources */,
 				8072B96F2939097A0056FD9E /* TemporaryData.swift in Sources */,
 				FA0E31EA292E112B005D54A2 /* ViewController.swift in Sources */,
@@ -578,7 +582,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 72Z52AQY49;
 				INFOPLIST_FILE = Mavsim/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -586,7 +590,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = shohin.izatullozoda.Mavsim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -605,7 +609,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 72Z52AQY49;
 				INFOPLIST_FILE = Mavsim/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -613,7 +617,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = shohin.izatullozoda.Mavsim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -21,7 +21,7 @@ class OrderStatusImageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.deleteButitnImage.addTarget(self, action: #selector(deleteButtonTrapped(_:)), for: .touchUpInside)
+        /*self.deleteButitnImage.addTarget(self, action: #selector(deleteButtonTrapped(_:)), for: .touchUpInside)*/
     }
     
     @IBAction func deleteButtonTrapped(_ sender: UIButton) {

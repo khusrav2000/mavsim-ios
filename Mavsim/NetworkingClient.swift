@@ -246,12 +246,12 @@ class NetworkingClient {
         
         AF.upload(multipartFormData: { multipartFormData in
             for img in images {
-                let imgData = img.jpegData(compressionQuality: 0.5)!
-                multipartFormData.append(imgData, withName: "")
+                let imgData = img.jpegData(compressionQuality: 0.25)!
+                multipartFormData.append(imgData, withName: "" ,fileName: "image.jpeg", mimeType: "image/jpeg")
             }
             multipartFormData.append(Data(String(appId).utf8), withName: "appId")
             multipartFormData.append(Data(String(status).utf8), withName: "status")
-            multipartFormData.append(Data(String(status).utf8), withName: "location")
+            multipartFormData.append(Data(String(location).utf8), withName: "location")
         },  to: url,
             method: .post,
             headers: headers)
@@ -264,12 +264,15 @@ class NetworkingClient {
             if response.response?.statusCode == 202 {
                 print("SUC RESS")
                 completion(true, nil)
+                return
             } else if let error = response.error {
                 print("ERROR = ", response.response?.statusCode)
                 print(response)
             
                 completion(false, error)
+                return
             }
+            completion(false, nil)
         }
     }
     

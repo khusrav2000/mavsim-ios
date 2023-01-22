@@ -41,10 +41,16 @@ class TabBarController: UITabBarController {
         
         // start
         locationService.requestAuthorization()
+        
+        
     }
 }
 
 extension TabBarController: LocationServiceDelegate {
+    func authTracking() {
+        print("Track")
+    }
+    
     func authorizationUknown() {
         locationServicesNeededState()
     }
@@ -58,6 +64,7 @@ extension TabBarController: LocationServiceDelegate {
     }
     
     func didAuthorize() {
+        locationService.requestTrackPermission()
         locationService.start()
     }
     
@@ -75,7 +82,7 @@ extension TabBarController: LocationServiceDelegate {
         let elapsed = time.timeIntervalSince(startTime)
         
         // print("elapsed = ", elapsed)
-        if elapsed > 15 {
+        if elapsed > 60 {
             print("start send " , locStr)
             self.startTime = time
             sendLocation(location: locStr)
@@ -104,19 +111,19 @@ extension TabBarController {
     }
     
     func promptForAuthorization() {
-        let alert = UIAlertController(title: "Location access is needed to get your current location", message: "Please allow location access", preferredStyle: .alert)
-        let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { _ in
+        let alert = UIAlertController(title: "Доступ к местоположению необходим, чтобы получить ваше текущее местоположение", message: "Чтобы приложении работала правильно пожалуйста включите доступ к местоположению в настройках. Сейчас приложение может работать некорректно, вы можете не видеть некоторые новые заказы.", preferredStyle: .alert)
+        /*let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { _ in
             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
-        })
+        })*/
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { [weak self] _ in
+        let cancelAction = UIAlertAction(title: "Ok", style: .default, handler: { [weak self] _ in
             self?.locationServicesNeededState()
         })
 
-        alert.addAction(settingsAction)
+        // alert.addAction(settingsAction)
         alert.addAction(cancelAction)
               
-        alert.preferredAction = settingsAction
+        // alert.preferredAction = settingsAction
 
         present(alert, animated: true, completion: nil)
     }

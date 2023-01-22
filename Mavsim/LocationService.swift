@@ -6,6 +6,7 @@
 //
 
 import CoreLocation
+import AppTrackingTransparency
 
 protocol LocationServiceDelegate: class {
     func authorizationRestricted()
@@ -13,6 +14,7 @@ protocol LocationServiceDelegate: class {
     func promptAuthorizationAction()
     func didAuthorize()
     func locationUpdate(locations: [CLLocation])
+    func authTracking()
 }
 
 class LocationService: NSObject {
@@ -42,6 +44,26 @@ class LocationService: NSObject {
     
     func stop() {
         locationManager.stopUpdatingLocation()
+    }
+    
+    func requestTrackPermission() {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    print("Authorized")
+                    self.delegate?.authTracking()
+                case .denied:
+                    print("Denied")
+                case .notDetermined:
+                    print("Not Determined")
+                case .restricted:
+                    print("Restricted")
+                @unknown default:
+                    print("Unknown")
+                }
+            }
+        }
     }
 }
 

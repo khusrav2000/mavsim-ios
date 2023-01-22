@@ -81,6 +81,12 @@ class OrderStatus: UIViewController{
         if selectedStatus!.file_upload && images.count == 0{
             showToast(controller: self, message: "Загрузите файл", seconds: 2)
         }
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ActivityIndicatorViewController") as! ActivityIndicatorViewController
+        vc.modalPresentationStyle = .custom
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+        
         let data = KeychainHelper.standart.read(service: "access-token", account: "mavsim")
         
         if data == nil {
@@ -89,11 +95,14 @@ class OrderStatus: UIViewController{
         let token = String(data: data!, encoding: .utf8)!
         NetworkingClient.standart.postPhotosAndStatus(token: token, appId: appId!, status: selectedStatus!.id, location: TemporaryData.lastLocation ?? "nil" , images: images) { (accept, error) in
             
-            if accept ?? false {
-                self.fileSuccessfullyUpload()
-            } else {
-                self.showToast(controller: self, message: "Неизвестная ошибка", seconds: 2)
-            }
+            vc.dismiss(animated: true, completion: {[self] in
+                if accept ?? false {
+                    self.fileSuccessfullyUpload()
+                } else {
+                    self.showToast(controller: self, message: "Неизвестная ошибка", seconds: 2)
+                }
+            })
+            
         }
     }
     
@@ -140,6 +149,15 @@ class OrderStatus: UIViewController{
 }
 
 extension OrderStatus: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        self.deletePhoto(row: indexPath.row)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.images.count
     }
@@ -149,9 +167,9 @@ extension OrderStatus: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderStatusImageCell", for: indexPath) as! OrderStatusImageCell
         cell.setValues(image: images[indexPath.row])
-        cell.deleteButtonAction = { [unowned self] in
+        /*cell.deleteButtonAction = { [unowned self] in
             self.deletePhoto(row: indexPath.row)
-        }
+        }*/
         
         return cell
         

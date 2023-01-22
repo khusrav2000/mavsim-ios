@@ -53,6 +53,10 @@ class TrackLocationViewController: UIViewController {
 }
 
 extension TrackLocationViewController: LocationServiceDelegate {
+    func authTracking() {
+        print("Track")
+    }
+    
     func authorizationUknown() {
         locationServicesNeededState()
     }

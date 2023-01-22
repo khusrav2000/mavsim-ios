@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.2</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -26,9 +26,19 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Need camera access to take picture</string>
+	<string>Нужен доступ к камере, чтобы сделать снимок</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Пожалуйста, разрешите приложению отслеживать ваше местоположение,
+чтобы оператор мог отслеживать ваше местоположение на карте и информировать клиентов.
+</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Пожалуйста, разрешите приложению отслеживать ваше местоположение,
+чтобы оператор мог отслеживать ваше местоположение на карте и информировать клиентов.
+</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Этот идентификатор будет использоваться, чтобы персонализировать список заказов.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>please allow access.</string>
+	<string>Нужен доступ к галерии, чтобы выбрать фото</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -73,9 +83,5 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>allow user track location</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>allow user track location</string>
 </dict>
 </plist>

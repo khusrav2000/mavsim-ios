@@ -26,7 +26,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Нужен доступ к камере, чтобы сделать снимок</string>
+	<string>Нужен доступ к камере, чтобы сделать снимок и отравить его админу и использовать при необходимости</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Пожалуйста, разрешите приложению отслеживать ваше местоположение,
 чтобы оператор мог отслеживать ваше местоположение на карте и информировать клиентов.
@@ -38,7 +38,7 @@
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Этот идентификатор будет использоваться, чтобы персонализировать список заказов.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Нужен доступ к галерии, чтобы выбрать фото</string>
+	<string>Нужен доступ к галерии, чтобы выбрать фото и отравить его админу и использовать при необходимости</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

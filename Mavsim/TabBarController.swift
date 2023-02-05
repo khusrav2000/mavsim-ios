@@ -48,7 +48,7 @@ class TabBarController: UITabBarController {
 
 extension TabBarController: LocationServiceDelegate {
     func authTracking() {
-        print("Track")
+        TemporaryData.trackPermission = true
     }
     
     func authorizationUknown() {
@@ -64,8 +64,11 @@ extension TabBarController: LocationServiceDelegate {
     }
     
     func didAuthorize() {
+        print("IS AUTH")
         locationService.requestTrackPermission()
-        locationService.start()
+        if TemporaryData.trackPermission {
+            locationService.start()
+        }
     }
     
     func locationUpdate(locations: [CLLocation]) {

@@ -25,6 +25,7 @@ class TabBarController: UITabBarController {
         
         //setupStatusLabel()
         initializeLocationServices()
+        locationService.requestTrackPermission()
         //tabBar.barTintColor = Colors.yellow
     }
     
@@ -48,6 +49,7 @@ class TabBarController: UITabBarController {
 
 extension TabBarController: LocationServiceDelegate {
     func authTracking() {
+        print("authtrack")
         TemporaryData.trackPermission = true
     }
     
@@ -65,10 +67,7 @@ extension TabBarController: LocationServiceDelegate {
     
     func didAuthorize() {
         print("IS AUTH")
-        locationService.requestTrackPermission()
-        if TemporaryData.trackPermission {
-            locationService.start()
-        }
+        locationService.start()
     }
     
     func locationUpdate(locations: [CLLocation]) {
@@ -88,8 +87,10 @@ extension TabBarController: LocationServiceDelegate {
         if elapsed > 60 {
             print("start send " , locStr)
             self.startTime = time
-            sendLocation(location: locStr)
             
+            if TemporaryData.trackPermission {
+                sendLocation(location: locStr)
+            }
         }
     }
 }

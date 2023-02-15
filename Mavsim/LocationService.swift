@@ -51,16 +51,16 @@ class LocationService: NSObject {
             ATTrackingManager.requestTrackingAuthorization { status in
                 switch status {
                 case .authorized:
-                    print("Authorized")
+                    print("Track Authorized")
                     self.delegate?.authTracking()
                 case .denied:
-                    print("Denied")
+                    print("Track Denied")
                 case .notDetermined:
-                    print("Not Determined")
+                    print("Track Not Determined")
                 case .restricted:
-                    print("Restricted")
+                    print("Track Restricted")
                 @unknown default:
-                    print("Unknown")
+                    print("Track Unknown")
                 }
             }
         }

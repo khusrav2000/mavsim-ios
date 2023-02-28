@@ -19,5 +19,6 @@ struct TemporaryData {
     static var user: User? = nil
     static var statues: [Status]? = nil
     static var lastLocation: String? = nil
+    static var lastAddress: String = ""
     static var trackPermission = false
 }

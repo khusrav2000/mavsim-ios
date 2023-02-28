@@ -11,6 +11,9 @@ import CoreLocation
 
 class TabBarController: UITabBarController {
     
+    
+    typealias LocationAddress = (String) -> Void
+    
     let locationService = LocationService()
     private var statusLabel: UILabel!
     var startTime: Date?
@@ -77,7 +80,7 @@ extension TabBarController: LocationServiceDelegate {
         let time = loc.timestamp
         // print(locStr)
         guard var startTime = startTime else {
-            self.startTime = time
+            self.startTime = time - 100
             return
         }
         
@@ -85,19 +88,47 @@ extension TabBarController: LocationServiceDelegate {
         
         // print("elapsed = ", elapsed)
         if elapsed > 60 {
-            print("start send " , locStr)
-            self.startTime = time
-            
-            if TemporaryData.trackPermission {
-                sendLocation(location: locStr)
+            reverseGeocoding(location: loc) { (address) in
+                print("start send " , locStr, address)
+                self.startTime = time
+                TemporaryData.lastAddress = address
+                
+                if TemporaryData.trackPermission {
+                    self.sendLocation(location: locStr, address: address)
+                }
             }
         }
+    }
+    
+    
+    func reverseGeocoding(location: CLLocation, completion: @escaping LocationAddress) {
+        let geocoder = CLGeocoder()
+        // let location = CLLocation(latitude: latitude, longitude: longitude)
+        geocoder.reverseGeocodeLocation(location, preferredLocale: Locale(identifier: "ru_RU"), completionHandler: {(placemarks, error) -> Void in
+            if error != nil {
+                print("Failed to retrieve address")
+                completion("");
+                return
+            }
+                        
+            else if let placemarks = placemarks, let placemark = placemarks.first {
+                print(placemark.address!)
+                completion(placemark.address!)
+                return
+            }
+            else
+            {
+                print("No Matching Address Found")
+                completion("")
+                return
+            }
+        })
     }
 }
 
 extension TabBarController {
     
-    func sendLocation(location: String) {
+    func sendLocation(location: String, address: String) {
         let data = KeychainHelper.standart.read(service: "access-token", account: "mavsim")
         
         if data == nil {
@@ -105,7 +136,7 @@ extension TabBarController {
         }
         let token = String(data: data!, encoding: .utf8)!
        
-        NetworkingClient.standart.putDriverLocation(token: token, location: location) { (success, error) in
+        NetworkingClient.standart.putDriverLocation(token: token, location: location, address: address) { (success, error) in
             if success ?? false {
                 print("success!!!!!!")
             } else {
@@ -141,5 +172,31 @@ extension TabBarController {
         // statusLabel.text = "The app is restricted from using the location services."
         print("The app is restricted from using the location services.")
     }
+}
+
+extension CLPlacemark {
+
+    var address: String? {
+        if let name = name {
+            var result = name
+
+            if let street = thoroughfare {
+                result += ", \(street)"
+            }
+
+            if let city = locality {
+                result += ", \(city)"
+            }
+
+            if let country = country {
+                result += ", \(country)"
+            }
+
+            return result
+        }
+
+        return nil
+    }
+
 }
 

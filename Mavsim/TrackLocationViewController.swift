@@ -5,7 +5,7 @@
 //  Created by istiqlolsoft on 03/01/23.
 //
 
-import UIKit
+/*import UIKit
 import CoreLocation
 
 class TrackLocationViewController: UIViewController {
@@ -106,7 +106,7 @@ extension TrackLocationViewController {
         }
         let token = String(data: data!, encoding: .utf8)!
        
-        NetworkingClient.standart.putDriverLocation(token: token, location: location) { (success, error) in
+        NetworkingClient.standart.putDriverLocation(token: token, location: location, address: <#T##String#>) { (success, error) in
             if success ?? false {
                 print("success!!!!!!")
             } else {
@@ -141,3 +141,4 @@ extension TrackLocationViewController {
         statusLabel.text = "The app is restricted from using the location services."
     }
 }
+*/

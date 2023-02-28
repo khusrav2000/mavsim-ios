@@ -68,6 +68,9 @@ class OrderStatus: UIViewController{
     }
     
     func selectStatus(status: Status) {
+        if (status.file_upload) {
+            showToast(controller: self, message: "Для этого статуса необходимо выбрать файл/закрепить фото", seconds: 1)
+        }
         selectedStatus = status
         selectStatusType.setTitle(status.name, for: .normal)
     }

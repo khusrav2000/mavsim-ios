@@ -217,11 +217,11 @@ class LoginController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
-    func trackLocation() {
+    /*func trackLocation() {
         let vc = TrackLocationViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
-    }
+    }*/
     
     func showRightToast(){
 

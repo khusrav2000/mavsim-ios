@@ -252,6 +252,7 @@ class NetworkingClient {
             multipartFormData.append(Data(String(appId).utf8), withName: "appId")
             multipartFormData.append(Data(String(status).utf8), withName: "status")
             multipartFormData.append(Data(String(location).utf8), withName: "location")
+            multipartFormData.append(Data(String(TemporaryData.lastAddress).utf8), withName: "locationName")
         },  to: url,
             method: .post,
             headers: headers)
@@ -276,7 +277,7 @@ class NetworkingClient {
         }
     }
     
-    func putDriverLocation(token: String, location: String, completion: @escaping WebServiceResponsePutDriverLocation) {
+    func putDriverLocation(token: String, location: String, address: String, completion: @escaping WebServiceResponsePutDriverLocation) {
         guard let url = URL(string: baseUrl + "/api/driver/location") else {
             return
         }
@@ -285,7 +286,8 @@ class NetworkingClient {
             .authorization(bearerToken: token)
         ]
         let parameters: [String: Any] = [
-            "location": location
+            "location": location,
+            "locationName": address
         ]
         
         AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers ).validate(statusCode: 200..<500).responseString { response in
